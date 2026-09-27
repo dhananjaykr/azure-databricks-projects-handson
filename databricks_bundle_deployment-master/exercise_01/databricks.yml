@@ -1,0 +1,12 @@
+bundle:
+  name: simple_databricks_bundle
+
+include:
+  - resources/*.yml
+
+targets:
+  dev:
+    mode: development
+    default: true
+    workspace:
+      host: https://adb-7405609765733903.3.azuredatabricks.net
