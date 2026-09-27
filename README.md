@@ -1,53 +1,42 @@
-End-to-End Retail Data Engineering Pipeline – AWS Glue | PySpark | Snowflake
-🎯 Overview
+# 🚀 Azure Databricks Projects Hands-On & DABs Deployment
 
-This project demonstrates an enterprise-grade data engineering pipeline for an e-commerce retail platform.
-It processes real-time and batch data from multiple systems such as Kafka, MQ, MongoDB, FTP, and SAP (Article & Inventory) into an analytics-ready Snowflake warehouse.
+[![Databricks](https://img.shields.io/badge/Databricks-Asset_Bundles_(DABs)-FF3621?logo=databricks&logoColor=white)](https://databricks.com/)
+[![Azure](https://img.shields.io/badge/Azure-Data_Engineering-0078D4?logo=microsoftazure&logoColor=white)](https://azure.microsoft.com/)
+[![PySpark](https://img.shields.io/badge/PySpark-3.x-E25A1C?logo=apachespark&logoColor=white)](https://spark.apache.org/)
+[![Snowflake](https://img.shields.io/badge/Snowflake-Data_Warehouse-29B5E8?logo=snowflake&logoColor=white)](https://www.snowflake.com/)
 
-🧩 Tech Stack
+---
 
-Programming: Python, SQL
+## 🎯 Project Overview
 
-Data Processing: PySpark on AWS Glue
+This repository showcases enterprise-grade end-to-end data engineering pipelines developed using **Azure Databricks**, **PySpark**, **AWS S3 / ADLS Gen2**, and **Snowflake**. 
 
-Data Storage: AWS S3, Snowflake
+It demonstrates modern **Software Engineering best practices for Data Engineering (CI/CD & Infrastructure as Code)** by automating Databricks workflow deployments using **Databricks Asset Bundles (DABs)** and **Databricks CLI** directly from local IDEs (PyCharm / VS Code) to cloud workspaces.
 
-Orchestration: Apache Airflow
+---
 
-Cloud Services: AWS EMR, Lambda, IAM, CloudWatch
+## 🧩 Tech Stack & Tools
 
-BI Integration: Tableau, Power BI
+* **Cloud Data Platform:** Azure Databricks (Free / Community Edition & Enterprise Workspaces)
+* **Programming & Frameworks:** Python 3.x, SQL, PySpark (Structured Streaming & Batch API)
+* **Deployment & IaC:** Databricks Asset Bundles (DABs), Databricks CLI v0.200+
+* **Data Storage & Warehousing:** AWS S3 / Azure Blob Storage, Snowflake Data Warehouse
+* **Local Development & Version Control:** PyCharm Professional, Git, GitHub
+* **Orchestration:** Databricks Workflows / Multi-Task Jobs
 
-🚀 Data Flow
+---
 
-Ingestion: Real-time (Kafka, MQ) and batch data ingested into AWS S3
+## 🏗️ Architecture & Deployment Flow
 
-Transformation: AWS Glue (PySpark) processes and validates 100GB+ SAP & 50GB daily transactional data
-
-Storage: Transformed data loaded into Snowflake for analytics
-
-Orchestration: Airflow automates workflows with alerts and dependency control
-
-Visualization: Tableau dashboards consume curated Snowflake tables
-
-⚡ Optimization Highlights
-
-Optimized PySpark jobs on EMR cluster with broadcast joins and dynamic partitioning
-
-Reduced Glue job runtime by 25%
-
-Automated SLA monitoring via CloudWatch
-
-📊 Project Structure
-📂 retail_data_pipeline_aws_glue_pyspark_snowflake
- ┣ 📁 scripts/
- ┣ 📁 airflow_dags/
- ┣ 📁 glue_jobs/
- ┣ 📁 sql_queries/
- ┣ 📁 docs/
- ┗ 📄 README.md
-
-🧑‍💻 Author
-
-Dhananjay Kumar
-Data Engineer | AWS Glue | PySpark | Snowflake | Airflow
+```text
++---------------------+        +--------------------+        +-------------------------+
+|   Local Machine     |        |   Databricks CLI   |        |    Azure Databricks     |
+|   (PyCharm IDE)     | -----> |   (DABs Engine)    | -----> |    Workspace & Jobs     |
+| Code & databricks.yml|        | Validate & Deploy  |        | Execution / Workflows   |
++---------------------+        +--------------------+        +-------------------------+
+                                                                          |
+                                                                          v
+                                                             +-------------------------+
+                                                             |   Target Warehouse      |
+                                                             |  (Snowflake / Delta Lake)|
+                                                             +-------------------------+
