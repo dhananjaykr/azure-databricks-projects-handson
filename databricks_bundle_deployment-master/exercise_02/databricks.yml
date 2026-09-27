@@ -1,0 +1,20 @@
+bundle:
+  name: exercise_02_parameterized_job_bundle
+
+include:
+  - resources/*.yml
+
+variables:
+  default_city:
+    description: Default city value for the job parameter.
+    default: Pune
+  default_min_id:
+    description: Default minimum customer ID for the job parameter.
+    default: "1"
+
+targets:
+  dev:
+    mode: development
+    default: true
+    workspace:
+      host: https://dbc-1c09adc8-628f.cloud.databricks.com

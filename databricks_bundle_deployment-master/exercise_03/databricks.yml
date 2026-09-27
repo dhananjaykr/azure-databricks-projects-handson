@@ -1,0 +1,20 @@
+bundle:
+  name: exercise_03_multi_task_job_bundle
+
+include:
+  - resources/*.yml
+
+variables:
+  default_city:
+    description: Default city value for the job parameter.
+    default: Pune
+  default_min_id:
+    description: Default minimum customer ID for the job parameter.
+    default: "1"
+
+targets:
+  dev:
+    mode: development
+    default: true
+    workspace:
+      host: https://dbc-9f50a039-6cf9.cloud.databricks.com/

@@ -1,0 +1,45 @@
+resources:
+  jobs:
+    multi_task_python_job:
+      name: exercise-03-multi-task-python-job
+      parameters:
+        - name: city
+          default: ${var.default_city}
+        - name: min_id
+          default: ${var.default_min_id}
+
+      tasks:
+        - task_key: validate_parameters
+          spark_python_task:
+            python_file: ../src/validate_parameters.py
+            parameters:
+              - "--city={{job.parameters.city}}"
+              - "--min_id={{job.parameters.min_id}}"
+          environment_key: default
+
+        - task_key: process_customers
+          depends_on:
+            - task_key: validate_parameters
+          spark_python_task:
+            python_file: ../src/process_customers.py
+            parameters:
+              - "--city={{job.parameters.city}}"
+              - "--min_id={{job.parameters.min_id}}"
+          environment_key: default
+
+        - task_key: summarize_run
+          depends_on:
+            - task_key: process_customers
+          spark_python_task:
+            python_file: ../src/summarize_run.py
+            parameters:
+              - "--city={{job.parameters.city}}"
+              - "--min_id={{job.parameters.min_id}}"
+              - "--job_name={{job.name}}"
+              - "--job_run_id={{job.run_id}}"
+          environment_key: default
+
+      environments:
+        - environment_key: default
+          spec:
+            environment_version: "2"

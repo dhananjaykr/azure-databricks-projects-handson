@@ -1,0 +1,14 @@
+resources:
+  jobs:
+    notebook_task_job:
+      name: exercise-04-notebook-task-job
+      parameters:
+        - name: city
+          default: ${var.default_city}
+        - name: min_id
+          default: ${var.default_min_id}
+
+      tasks:
+        - task_key: run_customer_notebook
+          notebook_task:
+            notebook_path: ../src/customer_filter_notebook.py
