@@ -1,0 +1,18 @@
+resources:
+  jobs:
+    workspace_path_job:
+      name: exercise-07-workspace-path-job
+      parameters:
+        - name: bundle_name
+          default: ${bundle.name}
+        - name: bundle_target
+          default: ${bundle.target}
+        - name: workspace_root_path
+          default: ${workspace.root_path}
+        - name: workspace_file_path
+          default: ${workspace.file_path}
+
+      tasks:
+        - task_key: inspect_workspace_paths
+          notebook_task:
+            notebook_path: ../src/inspect_workspace_paths.py

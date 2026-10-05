@@ -1,0 +1,16 @@
+resources:
+  jobs:
+    permissions_run_as_job:
+      name: exercise-10-permissions-run-as-job
+      parameters:
+        - name: city
+          default: ${var.default_city}
+        - name: min_id
+          default: ${var.default_min_id}
+        - name: run_as_user
+          default: ${workspace.current_user.userName}
+
+      tasks:
+        - task_key: inspect_run_identity
+          notebook_task:
+            notebook_path: ../src/inspect_run_identity.py

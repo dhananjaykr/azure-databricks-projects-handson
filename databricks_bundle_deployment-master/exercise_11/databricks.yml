@@ -1,0 +1,26 @@
+bundle:
+  name: exercise_11_python_wheel_bundle
+
+include:
+  - resources/*.yml
+
+artifacts:
+  default:
+    type: whl
+    build: python setup.py bdist_wheel
+    path: .
+
+variables:
+  default_city:
+    description: Default city value for the wheel task.
+    default: Pune
+  default_min_id:
+    description: Default minimum customer ID for the wheel task.
+    default: "1"
+
+targets:
+  dev:
+    mode: development
+    default: true
+    workspace:
+      host: https://adb-7405609765733903.3.azuredatabricks.net

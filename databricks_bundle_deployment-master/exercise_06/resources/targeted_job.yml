@@ -1,0 +1,16 @@
+resources:
+  jobs:
+    targeted_notebook_job:
+      name: exercise-06-${var.target_label}-targeted-notebook-job
+      parameters:
+        - name: target_label
+          default: ${var.target_label}
+        - name: city
+          default: ${var.default_city}
+        - name: min_id
+          default: ${var.default_min_id}
+
+      tasks:
+        - task_key: run_targeted_notebook
+          notebook_task:
+            notebook_path: ../src/targeted_customer_report.py

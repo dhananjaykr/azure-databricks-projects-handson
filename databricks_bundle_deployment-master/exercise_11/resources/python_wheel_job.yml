@@ -1,0 +1,26 @@
+resources:
+  jobs:
+    python_wheel_package_job:
+      name: exercise-11-python-wheel-package-job
+      parameters:
+        - name: city
+          default: ${var.default_city}
+        - name: min_id
+          default: ${var.default_min_id}
+
+      tasks:
+        - task_key: run_customer_wheel
+          python_wheel_task:
+            package_name: customer_wheel_job
+            entry_point: main
+            parameters:
+              - "--city={{job.parameters.city}}"
+              - "--min_id={{job.parameters.min_id}}"
+          environment_key: default
+
+      environments:
+        - environment_key: default
+          spec:
+            environment_version: "4"
+            dependencies:
+              - ../dist/*.whl

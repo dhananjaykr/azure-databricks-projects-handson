@@ -1,0 +1,20 @@
+bundle:
+  name: exercise_12_tests_before_deploy_bundle
+
+include:
+  - resources/*.yml
+
+variables:
+  default_city:
+    description: Default city value for the tested Python file job.
+    default: Pune
+  default_min_id:
+    description: Default minimum customer ID for the tested Python file job.
+    default: "1"
+
+targets:
+  dev:
+    mode: development
+    default: true
+    workspace:
+      host: https://adb-7405609765733903.3.azuredatabricks.net

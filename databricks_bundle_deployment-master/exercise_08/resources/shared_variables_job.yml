@@ -1,0 +1,25 @@
+resources:
+  jobs:
+    shared_variables_job:
+      name: exercise-08-${var.environment_label}-shared-variables-job
+      tags:
+        exercise: "08"
+        environment: ${var.environment_label}
+        owner: ${var.report_owner}
+
+      parameters:
+        - name: report_title
+          default: ${var.report_title}
+        - name: report_owner
+          default: ${var.report_owner}
+        - name: environment_label
+          default: ${var.environment_label}
+        - name: city
+          default: ${var.default_city}
+        - name: min_id
+          default: ${var.default_min_id}
+
+      tasks:
+        - task_key: run_shared_variables_notebook
+          notebook_task:
+            notebook_path: ../src/shared_variables_report.py

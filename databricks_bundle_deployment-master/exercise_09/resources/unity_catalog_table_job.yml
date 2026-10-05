@@ -1,0 +1,20 @@
+resources:
+  jobs:
+    unity_catalog_table_job:
+      name: exercise-09-unity-catalog-table-job
+      parameters:
+        - name: catalog_name
+          default: ${var.catalog_name}
+        - name: schema_name
+          default: ${var.schema_name}
+        - name: table_name
+          default: ${var.table_name}
+        - name: city
+          default: ${var.default_city}
+        - name: min_id
+          default: ${var.default_min_id}
+
+      tasks:
+        - task_key: write_and_read_uc_table
+          notebook_task:
+            notebook_path: ../src/write_and_read_uc_table.py

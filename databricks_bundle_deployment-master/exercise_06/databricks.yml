@@ -1,0 +1,37 @@
+bundle:
+  name: exercise_06_targets_bundle
+
+include:
+  - resources/*.yml
+
+variables:
+  target_label:
+    description: Label printed by the job to show which target was deployed.
+    default: dev
+  default_city:
+    description: Default city value for the job parameter.
+    default: Pune
+  default_min_id:
+    description: Default minimum customer ID for the job parameter.
+    default: "1"
+
+targets:
+  dev:
+    mode: development
+    default: true
+    workspace:
+      host: https://dbc-9f50a039-6cf9.cloud.databricks.com/
+    variables:
+      target_label: dev
+      default_city: Pune
+      default_min_id: "1"
+
+  prod_like:
+    mode: production
+    workspace:
+      host: https://dbc-9f50a039-6cf9.cloud.databricks.com/
+      root_path: /Workspace/Users/${workspace.current_user.userName}/.bundle/${bundle.name}/${bundle.target}
+    variables:
+      target_label: prod_like
+      default_city: Mumbai
+      default_min_id: "2"

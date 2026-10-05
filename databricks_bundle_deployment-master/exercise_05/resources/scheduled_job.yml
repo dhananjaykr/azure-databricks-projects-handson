@@ -1,0 +1,19 @@
+resources:
+  jobs:
+    scheduled_notebook_job:
+      name: exercise-05-scheduled-notebook-job
+      parameters:
+        - name: city
+          default: ${var.default_city}
+        - name: min_id
+          default: ${var.default_min_id}
+
+      tasks:
+        - task_key: run_scheduled_customer_report
+          notebook_task:
+            notebook_path: ../src/scheduled_customer_report.py
+
+      schedule:
+        quartz_cron_expression: ${var.schedule_quartz_cron_expression}
+        timezone_id: ${var.schedule_timezone_id}
+        pause_status: ${var.schedule_pause_status}

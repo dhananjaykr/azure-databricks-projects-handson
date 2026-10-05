@@ -1,0 +1,29 @@
+bundle:
+  name: exercise_05_scheduled_job_bundle
+
+include:
+  - resources/*.yml
+
+variables:
+  default_city:
+    description: Default city value for the job parameter.
+    default: Pune
+  default_min_id:
+    description: Default minimum customer ID for the job parameter.
+    default: "1"
+  schedule_quartz_cron_expression:
+    description: Quartz cron expression for the scheduled job.
+    default: "0 0 9 * * ?"
+  schedule_timezone_id:
+    description: Timezone used by the scheduled job.
+    default: Asia/Kolkata
+  schedule_pause_status:
+    description: Keep the training schedule paused until the learner intentionally enables it.
+    default: PAUSED
+
+targets:
+  dev:
+    mode: development
+    default: true
+    workspace:
+      host: https://dbc-9f50a039-6cf9.cloud.databricks.com

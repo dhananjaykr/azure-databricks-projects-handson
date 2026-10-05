@@ -1,0 +1,29 @@
+bundle:
+  name: exercise_09_unity_catalog_table_bundle
+
+include:
+  - resources/*.yml
+
+variables:
+  catalog_name:
+    description: Unity Catalog catalog where the table will be created.
+    default: workspace
+  schema_name:
+    description: Unity Catalog schema where the table will be created.
+    default: default
+  table_name:
+    description: Unity Catalog table name for this exercise.
+    default: exercise_09_customers
+  default_city:
+    description: Default city value for the job parameter.
+    default: Pune
+  default_min_id:
+    description: Default minimum customer ID for the job parameter.
+    default: "1"
+
+targets:
+  dev:
+    mode: development
+    default: true
+    workspace:
+      host: https://adb-7405609765733903.3.azuredatabricks.net
